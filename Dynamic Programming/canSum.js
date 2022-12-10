@@ -22,7 +22,7 @@ const canSum2 = (arrs, sum, memo={})=>{
     }
     return false;
 }
-
+ 
 
 process.stdin.setEncoding('utf-8')
 let input = "";
