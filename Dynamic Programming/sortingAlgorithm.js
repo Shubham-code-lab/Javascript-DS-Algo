@@ -39,23 +39,33 @@ let insertSort = function(arrs){
 }
 
 let sortArrays = function(arrs, left, right){
-    let rootPosition = 0,rootSize = arrs.length;
-    while (rootSize > 0){
-        
+    let rootPosition = 0;
+    let leftPosition = 0;
+    let rightPosition = 0;
+    let leftLength = left.length;
+    let rightLength = right.length;
+    
+    while (leftPosition < leftLength && rightPosition < rightLength){
+        if(left[leftPosition] < right[rightPosition])arrs[rootPosition++] = left[leftPosition++];
+        else arrs[rootPosition++] = right[rightPosition++];
     }
+    while(leftPosition < leftLength)arrs[rootPosition++] = left[leftPosition++];
+    while(rightPosition < rightLength)arrs[rootPosition++] = right[rightPosition++];
 }
 
 let mergeSort = function(arrs){
     let arrayLength = arrs.length;
-    if(arrayLength < 2)return;
+    if(arrayLength < 2)return;            //if one element return
     let mid = Math.floor(arrayLength/2);
-    let left,right = [];
+    let left=[],right = [];
     for(let i=0;i<mid; i++)left.push(arrs[i]);
     for(let i=mid;i<arrayLength; i++)right.push(arrs[i]);
-    mergeSort(left);
-    mergeSort(right);
-    sortArrays(arrs, left, right);
+    mergeSort(left);          //left is same arrs for next recursive function call      soo update happen 
+    mergeSort(right);         //right is same arrs for next recursive function call      soo update happen
+    sortArrays(arrs, left, right);  //arrs is updated which might be left or right of previous function call
 }
+
+
 
 let input = '';
 process.stdin.setEncoding('utf-8')
@@ -67,6 +77,7 @@ process.on('SIGINT', ()=>{
     // console.log(selectSort(arrs));
     // console.log(bubbleSort(arrs));
     // console.log(insertSort(arrs));
-
+    mergeSort(arrs);
+    console.log(arrs);
     process.exit()
 })
