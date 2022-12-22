@@ -57,15 +57,34 @@ let mergeSort = function(arrs){
     let arrayLength = arrs.length;
     if(arrayLength < 2)return;            //if one element return
     let mid = Math.floor(arrayLength/2);
-    let left=[],right = [];
-    for(let i=0;i<mid; i++)left.push(arrs[i]);
-    for(let i=mid;i<arrayLength; i++)right.push(arrs[i]);
+    let left = arrs.slice(0,mid);
+    let right = arrs.slice(mid,arrayLength);
     mergeSort(left);          //left is same arrs for next recursive function call      soo update happen 
     mergeSort(right);         //right is same arrs for next recursive function call      soo update happen
     sortArrays(arrs, left, right);  //arrs is updated which might be left or right of previous function call
+    return arrs;
 }
 
+let partition = function(arrs, start, end){
+    let pivot = arrs[end];
+    let pIndex = start;
+    for(let i= start;i<end;i++){  //[end] is pivot
+        if(arrs[i] < pivot){
+            [arrs[pIndex], arrs[i]] = [arrs[i], arrs[pIndex]]
+            pIndex++;
+        }
+    }
+    [arrs[pIndex], arrs[end]] = [arrs[end], arrs[pIndex]];
+    return pIndex;
+}
 
+let quickSort = function(arrs, start=0 , end=arrs.length-1){
+    if(start < end){   //start =1, end =1   //start =1 end =0 
+        let pIndex = partition(arrs, start, end);
+        quickSort(arrs, start, pIndex - 1);
+        quickSort(arrs, pIndex + 1 , end);
+    }
+}
 
 let input = '';
 process.stdin.setEncoding('utf-8')
@@ -77,7 +96,8 @@ process.on('SIGINT', ()=>{
     // console.log(selectSort(arrs));
     // console.log(bubbleSort(arrs));
     // console.log(insertSort(arrs));
-    mergeSort(arrs);
+    // console.log(mergeSort(arrs));
+    quickSort(arrs);
     console.log(arrs);
     process.exit()
 })
