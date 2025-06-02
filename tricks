@@ -1,0 +1,7 @@
+const length = 5
+const result = Array(length+1).fill(0).map((_, i) => i);
+console.log(result); // [0, 1, 2, 3, 4, 5]
+
+const n = 10;
+const numbers = Array.from({ length: n + 1 }, (_, i) => i);
+console.log(numbers); // [0, 1, 2, 3, ..., 10]
