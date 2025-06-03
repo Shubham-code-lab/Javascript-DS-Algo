@@ -14,6 +14,14 @@ const arr = [1, 2, 3];
 Array.from({length: 5}, (_, i) => i);  // [0,1,2,3,4]
 Array(5).fill(0);                      // [0,0,0,0,0]
 
+const length = 5
+const result = Array(length+1).fill(0).map((_, i) => i);
+console.log(result); // [0, 1, 2, 3, 4, 5]
+
+const n = 10;
+const numbers = Array.from({ length: n + 1 }, (_, i) => i);
+console.log(numbers); // [0, 1, 2, 3, ..., 10]
+
 // 🔁 Iteration
 arr.forEach(x => console.log(x));      // No return, just iterate\const doubled = arr.map(x => x * 2);    // [2, 4, 6]
 const evens = arr.filter(x => x % 2 === 0); // [2]
