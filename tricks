@@ -5,3 +5,120 @@ console.log(result); // [0, 1, 2, 3, 4, 5]
 const n = 10;
 const numbers = Array.from({ length: n + 1 }, (_, i) => i);
 console.log(numbers); // [0, 1, 2, 3, ..., 10]
+
+
+
+// ──────────────────────────────────────────────
+// ✅ JavaScript Competitive Programming Cheat Sheet
+// ✅ Arrays, Map, Set, Stack - Most Used Methods
+// ──────────────────────────────────────────────
+
+
+// 📦 Array (ordered list)
+const arr = [1, 2, 3];
+
+// 🔁 Iteration
+arr.forEach(x => console.log(x));
+arr.map(x => x * 2);
+arr.filter(x => x % 2 === 0);
+arr.reduce((a, b) => a + b, 0);
+
+// 🔍 Search & Check
+arr.includes(2);     // true
+arr.indexOf(3);      // 2
+arr.find(x => x > 1); // 2
+arr.every(x => x > 0); // true
+arr.some(x => x > 2);  // true
+
+// 🛠️ Modify
+arr.push(4);         // Add to end
+arr.pop();           // Remove from end
+arr.unshift(0);      // Add to start
+arr.shift();         // Remove from start
+arr.splice(1, 1);     // Remove 1 element at index 1
+arr.reverse();       // Reverse in place
+arr.sort((a, b) => a - b); // Numeric sort
+
+// 📄 Convert
+Array.from("abc");       // ['a', 'b', 'c']
+[...new Set(arr)];       // Remove duplicates
+arr.join("-");           // "1-2-3"
+"1,2,3".split(",");      // ["1", "2", "3"]
+
+
+// 🗺️ Map (key-value pairs, insertion order preserved)
+const map = new Map();
+
+// 🔧 Operations
+map.set("a", 1);          // Add or update
+map.get("a");             // Get value
+map.has("a");             // Check key
+map.delete("a");          // Remove key
+map.size;                 // Count of pairs
+map.clear();              // Remove all
+
+// 🔁 Iterate
+for (let [k, v] of map) console.log(k, v);
+for (let k of map.keys()) console.log(k);
+for (let v of map.values()) console.log(v);
+
+// 📄 Convert
+const obj = { a: 1, b: 2 };
+const mapFromObj = new Map(Object.entries(obj));
+const objFromMap = Object.fromEntries(map);
+
+
+// 🧺 Set (unique values)
+const set = new Set();
+
+// 🔧 Operations
+set.add(1);            // Add value
+set.has(1);            // Check value
+set.delete(1);         // Remove value
+set.size;              // Count
+set.clear();           // Clear all
+
+// 🔁 Iterate
+for (let val of set) console.log(val);
+[...set].forEach(x => console.log(x));
+
+// 📄 Convert
+const arrFromSet = Array.from(set);
+const setFromArr = new Set([1, 2, 2, 3]); // auto removes duplicates
+
+// 🧪 Use Case
+const intersect = (a, b) => [...a].filter(x => b.has(x));
+const diff = (a, b) => [...a].filter(x => !b.has(x));
+
+
+// 🥞 Stack (LIFO) using Array
+const stack = [];
+
+// 🔧 Operations
+stack.push(1);              // Add
+stack.pop();                // Remove
+stack[stack.length - 1];    // Peek
+stack.length === 0;         // Is empty
+
+// 🔄 Custom Stack class
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+  push(val) { this.items.push(val); }
+  pop() { return this.items.pop(); }
+  peek() { return this.items[this.items.length - 1]; }
+  isEmpty() { return this.items.length === 0; }
+  size() { return this.items.length; }
+  clear() { this.items = []; }
+}
+
+// Example usage:
+// const s = new Stack();
+// s.push(10); s.peek(); s.pop();
+
+
+// 🔢 Create number array from 0 to n
+const n = 10;
+const numbers = Array.from({ length: n + 1 }, (_, i) => i);
+// result: [0, 1, 2, ..., 10]
