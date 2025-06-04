@@ -1,3 +1,6 @@
+//time :- O(n)
+//space :- O(n)
+
 function twoSum(nums: number[], target: number): number[] {
     const lookUpMap:any = new Map();
      
