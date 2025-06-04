@@ -105,7 +105,7 @@ set.add(1);
 set.has(1);
 set.delete(1);
 set.clear();
-set.size();
+set.size;
 
 // Convert
 [...set];
